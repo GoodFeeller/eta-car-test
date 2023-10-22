@@ -7,7 +7,7 @@ const Chart: FunctionComponent<{id: string}> = ({id}) => {
     const { history, setNewInterval, interval} = useHistory(id)
 
     return <div>
-        <ChartParams setNewInterval={setInterval} interval={interval}/>
+        <ChartParams setNewInterval={setNewInterval} interval={interval}/>
         <ChartContent interval={interval} history={history}/>
     </div>
 }
