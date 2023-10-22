@@ -1,0 +1,22 @@
+.modalBody {
+  position: fixed;
+  min-width: 100vw;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: open 0.25s forwards ease;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

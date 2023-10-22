@@ -1,0 +1,25 @@
+.headerBody {
+  padding: 2vw 0;
+  border-bottom: black solid 0.1vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+.img {
+  width: 2vw;
+  height: 2vw;
+  margin-right: 1vw;
+  user-select: none;
+}
+
+.title {
+  font-family: "Calisto MT", sans-serif;
+  font-size: 2vw;
+  user-select: none;
+}
+
+.titleBody {
+  display: flex;
+  align-items: center;
+
+}

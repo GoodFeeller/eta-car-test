@@ -1,0 +1,111 @@
+.content {
+  background: white;
+  border-radius: 1vw;
+  padding: 20px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  font-size: 25pt;
+  font-weight: 500;
+}
+
+.coinName {
+  display: flex;
+  align-items: center;
+  img {
+    width: 75px;
+    margin-right: 40px;
+    height: 75px;
+  }
+  span {
+    font-size: 20pt;
+    font-weight: 500;
+  }
+}
+
+.price {
+  font-weight: 500;
+  font-size: 30pt;
+}
+
+.buyBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  input {
+    text-align: center;
+    width: 100px;
+    outline: none;
+    border: none;
+    border-bottom: black solid 0.02vw;
+    padding: 5px;
+    font-family: Bahnschrift, sans-serif;
+    font-weight: 500;
+    font-size: 18pt;
+    margin-bottom: 30px;
+  }
+  button {
+    border: black solid 0.02vw;
+    padding: 10px 20px;
+    font-weight: 800;
+    font-size: 22px;
+    border-radius: 1vw;
+    background: white;
+    transition: all ease 0.25s;
+    &:hover {
+      color: white;
+      background: black;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    width: 55.55vw;
+    padding: 2.222vw;
+  }
+  .title {
+    font-size: 3.6vw;
+  }
+  .price {
+    font-size: 4.5vw;
+  }
+  .coinName {
+    img {
+      width: 8.33vw;
+      height: 8.33vw;
+      margin-right: 4.44vw;
+    }
+    span {
+      font-size: 3vw;
+    }
+  }
+  .buyBlock {
+    input {
+      width: 11.11vw;
+      margin-bottom: 3.33vw;
+      font-size: 2.8vw;
+    }
+    button {
+      padding: 1.11vw 2.22vw;
+      font-size: 2.44vw;
+    }
+
+  }
+}
+
+@media (max-width: 560px) {
+  .buyBlock {
+    input {
+      width: 80%;
+    }
+    button {
+      width: 80%;
+    }
+  }
+
+}

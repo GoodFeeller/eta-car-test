@@ -19,7 +19,7 @@ const TableHeader: FunctionComponent<IProps> = ({sort, setSort}) => {
         <th className={styles.imgTd}>Name</th>
         <th onClick={() => changeSort('priceUsd')}>Price</th>
         <th onClick={() => changeSort('marketCapUsd')}>Market Cap</th>
-        <th onClick={() => changeSort("changePercent24Hr")}>24h %</th>
+        <th onClick={() => changeSort("changePercent24Hr")}>24h%</th>
         <th/>
     </tr>
     </thead>
