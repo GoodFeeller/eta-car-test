@@ -8,6 +8,8 @@ function useSearch() {
     const [page, setPage] = useState<number>(1)
     const [coins, setCoins] = useState<ICoin[]>([])
     const [end, setEnd] = useState<boolean>(false)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect( () => {
         const getData = async () => {
             if (loading && !end) {
@@ -20,7 +22,9 @@ function useSearch() {
         }
         getData()
 
-    }, [loading, end, page, search])
+    }, [loading])
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect( () => {
         const getNewData = async () => {
             const response: ICoin[] = search !== '' ? await coinTableService.searchCoins(search, 1) : await CoinTableService.getAllCoins(1)
@@ -30,7 +34,7 @@ function useSearch() {
             setLoading(false)
         }
         getNewData()
-    }, [search, page])
+    }, [search])
 
     useEffect( () => {
         const scrollHandler = () => {

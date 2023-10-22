@@ -18,11 +18,12 @@ function useSortCoins(coins: ICoin[], setCoins: Dispatch<SetStateAction<ICoin[]>
         }
         else return 0
     }, [sort])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect( () => {
         const tempCoins = [...coins]
         tempCoins.sort(sortFunc)
         setCoins(tempCoins)
-    }, [sort, sortFunc, loading, setCoins, coins])
+    }, [sort, sortFunc, loading])
     return {sort, setSort}
 }
 export default useSortCoins
