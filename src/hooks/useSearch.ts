@@ -21,10 +21,9 @@ function useSearch() {
             }
         }
         getData()
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading])
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect( () => {
         const getNewData = async () => {
             const response: ICoin[] = search !== '' ? await coinTableService.searchCoins(search, 1) : await CoinTableService.getAllCoins(1)
@@ -34,6 +33,7 @@ function useSearch() {
             setLoading(false)
         }
         getNewData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search])
 
     useEffect( () => {
