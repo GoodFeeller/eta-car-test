@@ -1,0 +1,33 @@
+.params {
+  display: flex;
+  width: 24vw;
+  background: rgba(126, 120, 120, 0.42);
+  border-radius: 1vw;
+
+}
+
+@mixin paramTemplate($color) {
+  cursor: pointer;
+  padding: 0.5vw 0;
+  width: 6vw;
+  text-align: center;
+  display: inline-block;
+  font-size: 0.9vw;
+  font-weight: 600;
+  border-radius: 1vw;
+  transition: all ease 0.25s;
+  color: $color;
+  &:hover {
+    background: rgba(86, 83, 83, 0.42);
+    box-shadow: black 0 0 0.3vw 0.05vw;
+  }
+}
+
+.param {
+  @include paramTemplate(rgba(0, 0, 0, 0.49))
+}
+
+
+.chosenParam {
+  @include paramTemplate(black)
+}

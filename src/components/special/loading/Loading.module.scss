@@ -1,0 +1,43 @@
+.loadBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svg {
+  width: 1.5vw;
+}
+.loading {
+  font-size: 1.2vw;
+  margin-right: 2vw;
+  display: inline-block;
+  padding-bottom: 1vw;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 4;
+  stroke: black;
+  stroke-dasharray: 30 83.45;
+  animation: forwards infinite load 1s linear, array infinite 3s linear;
+}
+
+@keyframes load {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -114.5;
+  }
+}
+
+@keyframes array {
+  from {
+    stroke-dasharray: 30 83.45;
+  }
+  50% {
+    stroke-dasharray: 60 53.45;
+  }
+  to {
+    stroke-dasharray: 30 83.45;
+  }
+}

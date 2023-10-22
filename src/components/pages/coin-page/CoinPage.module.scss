@@ -1,0 +1,20 @@
+.body {
+  margin: 5vw 2vw 2vw 2vw;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas: 'title chart' 'info chart';
+  &>div {
+    &:nth-child(1) {
+      grid-area: title;
+    }
+    &:nth-child(2) {
+      grid-area: chart;
+      width: 65vw;
+    }
+    &:nth-child(3) {
+      grid-area: info;
+    }
+  }
+}
