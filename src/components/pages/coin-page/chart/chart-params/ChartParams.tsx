@@ -21,7 +21,7 @@ const ChartParams: FunctionComponent<IProps> = ({ interval, setNewInterval}) => 
         <span
             className={interval === 'h1' ? styles.chosenParam : styles.param}
             onClick={ () => setNewInterval("h1")}>
-            1 Monthnpm
+            1 Month
         </span>
         <span
             className={interval === 'd1' ? styles.chosenParam : styles.param}
