@@ -4,10 +4,10 @@ import useHistory from "../../../../hooks/useHistory";
 import ChartContent from "./chart-content/ChartContent";
 
 const Chart: FunctionComponent<{id: string}> = ({id}) => {
-    const { history, setInterval, interval} = useHistory(id)
+    const { history, setNewInterval, interval} = useHistory(id)
 
     return <div>
-        <ChartParams setInterval={setInterval} interval={interval}/>
+        <ChartParams setNewInterval={setInterval} interval={interval}/>
         <ChartContent interval={interval} history={history}/>
     </div>
 }

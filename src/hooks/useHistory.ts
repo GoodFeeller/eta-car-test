@@ -3,7 +3,7 @@ import CoinInfoService, { IHistory} from "../service/CoinInfoService";
 export type intervalType = 'm1' | 'm15' | 'h1' | 'd1'
 
 function useHistory(id: string) {
-    const [interval, setInterval] = useState<intervalType>('m1')
+    const [interval, setNewInterval] = useState<intervalType>('m1')
     const [history, setHistory] = useState<IHistory[]>([])
 
 
@@ -20,6 +20,6 @@ function useHistory(id: string) {
         }
         getHistory()
     }, [interval, id])
-    return {history, interval, setInterval}
+    return {history, interval, setNewInterval}
 }
 export default useHistory
