@@ -20,7 +20,7 @@ function useSearch() {
         }
         getData()
 
-    }, [loading, end])
+    }, [loading, end, page, search])
     useEffect( () => {
         const getNewData = async () => {
             const response: ICoin[] = search !== '' ? await coinTableService.searchCoins(search, 1) : await CoinTableService.getAllCoins(1)
