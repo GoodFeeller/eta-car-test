@@ -30,7 +30,7 @@ function useSearch() {
             setLoading(false)
         }
         getNewData()
-    }, [search])
+    }, [search, page])
 
     useEffect( () => {
         const scrollHandler = () => {

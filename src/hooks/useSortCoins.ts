@@ -22,7 +22,7 @@ function useSortCoins(coins: ICoin[], setCoins: Dispatch<SetStateAction<ICoin[]>
         const tempCoins = [...coins]
         tempCoins.sort(sortFunc)
         setCoins(tempCoins)
-    }, [sort, sortFunc, loading])
+    }, [sort, sortFunc, loading, setCoins, coins])
     return {sort, setSort}
 }
 export default useSortCoins
