@@ -32,7 +32,7 @@ const ProfileModal: FunctionComponent = () => {
             <span style={nowPrice - profile.totalPrice < 0 ? {color: 'red'} :
                 nowPrice - profile.totalPrice > 0 ? {color: 'green'} : {color: "black"}}>
                 {
-                    nowPrice == 0 ?
+                    nowPrice === 0 ?
                         '0%'
                         :
                         Intl.NumberFormat("en", {maximumFractionDigits: 2}).format((nowPrice - profile.totalPrice) / nowPrice * 100) + '%'}
