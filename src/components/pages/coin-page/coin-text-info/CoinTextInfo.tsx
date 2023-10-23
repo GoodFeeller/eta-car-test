@@ -7,6 +7,7 @@ const CoinTextInfo: FunctionComponent<{coin: ICoinInfo}> = ({ coin }) => {
         <div className={styles.nameBody}>
             <span>{coin.name}</span>
             <span>{coin.symbol}</span>
+            <img src={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`} alt={'Not found'}/>
         </div>
         <div className={styles.priceBody}>
             <span>{Intl.NumberFormat("en", { style: 'currency' , currency: "USD"}).format( Number(coin.priceUsd) )}</span>

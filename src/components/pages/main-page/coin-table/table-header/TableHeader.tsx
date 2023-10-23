@@ -15,11 +15,23 @@ const TableHeader: FunctionComponent<IProps> = ({sort, setSort}) => {
     }
     return <thead>
     <tr>
-        <th onClick={() => changeSort('rank')}>#</th>
+        <th onClick={() => changeSort('rank')}>
+            {sort.property === 'rank' ?
+                sort.to === 'up' ? '# (up)' : '# (down)' : '#'}
+        </th>
         <th className={styles.imgTd}>Name</th>
-        <th onClick={() => changeSort('priceUsd')}>Price</th>
-        <th onClick={() => changeSort('marketCapUsd')}>Market Cap</th>
-        <th onClick={() => changeSort("changePercent24Hr")}>24h%</th>
+        <th onClick={() => changeSort('priceUsd')}>
+            {sort.property === 'priceUsd' ?
+                sort.to === 'up' ? 'Price (up)' : 'Price (down)' : 'Price'}
+        </th>
+        <th onClick={() => changeSort('marketCapUsd')}>
+            {sort.property === 'marketCapUsd' ?
+                sort.to === 'up' ? 'Market Cap (up)' : 'Market Cap (down)' : 'Market Cap'}
+        </th>
+        <th onClick={() => changeSort("changePercent24Hr")}>
+            {sort.property === 'changePercent24Hr' ?
+                sort.to === 'up' ? '24h% (up)' : '24h% (down)' : '24h%'}
+        </th>
         <th/>
     </tr>
     </thead>

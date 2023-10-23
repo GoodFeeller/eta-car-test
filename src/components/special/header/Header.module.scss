@@ -1,25 +1,55 @@
 .headerBody {
-  padding: 2vw 0;
+  padding: 2vw 2vw;
   border-bottom: black solid 0.1vw;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
 }
 
 .img {
-  width: 2vw;
-  height: 2vw;
+  width: 30px;
+  height: 30px;
   margin-right: 1vw;
   user-select: none;
 }
 
 .title {
   font-family: "Calisto MT", sans-serif;
-  font-size: 2vw;
+  font-size: 25px;
   user-select: none;
 }
 
 .titleBody {
   display: flex;
   align-items: center;
+
+}
+
+@media (max-width: 800px) {
+  .headerBody {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas: 'title profile' 'coins coins' ;
+    row-gap: 3vw;
+    &>div {
+      &:last-child {
+        grid-area: profile;
+      }
+      &:nth-child(2) {
+        grid-area: coins;
+        justify-self: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .img {
+    width: 5.3vw;
+    height: 5.3vw;
+  }
+  .title {
+    font-size: 4.46vw;
+  }
 
 }

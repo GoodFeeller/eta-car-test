@@ -17,19 +17,48 @@
   align-items: center;
   font-weight: 600;
   img {
-    width: 2vw;
-    height: 2vw;
+    width: 20px;
+    height: 20px;
     user-select: none;
     grid-area: img;
   }
   span {
+    font-size: 18px;
     &:nth-child(2) {
       grid-area: symbol;
-      font-size: 1.2vw;
     }
     &:last-child {
       grid-area: price;
-      font-size: 1.2vw;
+    }
+  }
+}
+ 
+@media (max-width: 800px) {
+  .coinItem {
+    img {
+      width: 20px;
+      height: 20px;
+    }
+    span {
+      font-size: 20px;
+      &:not(&:last-child) {
+        margin-right: 5vw;
+      }
+    }
+  }
+}
+
+@media (max-width: 510px) {
+  .coinItem {
+    img {
+      width: 3.92vw;
+      height: 3.92vw;
+    }
+    span {
+      font-size: 3.92vw;
+      &:not(&:last-child) {
+        margin-right: 5vw;
+      }
     }
   }
 }

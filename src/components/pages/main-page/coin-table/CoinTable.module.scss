@@ -11,9 +11,14 @@
   border-collapse: collapse;
   font-weight: 500;
   th {
+    width: 10vw;
     border-bottom: 1px black solid;
     padding: 1vw 1vw 0 2vw;
     font-weight: 900;
+    user-select: none;
+    &:not(&:nth-child(2)) {
+      cursor: pointer;
+    }
   }
   td {
     border-bottom: 1px rgba(168, 168, 168, 0.5) solid;

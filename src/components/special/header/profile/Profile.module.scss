@@ -1,0 +1,26 @@
+.profile {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 'title title' 'price price' 'newPrice percent';
+  & span {
+    font-size: 18px;
+    &:nth-child(1) {
+      grid-area: title;
+      font-weight: 800;
+    }
+    &:nth-child(2) {
+      font-weight: 500;
+      grid-area: price;
+    }
+  }
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .profile {
+    span {
+      font-size: 3.2vw;
+    }
+  }
+}

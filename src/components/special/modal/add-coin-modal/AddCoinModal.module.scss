@@ -40,8 +40,6 @@
     text-align: center;
     width: 100px;
     outline: none;
-    border: none;
-    border-bottom: black solid 0.02vw;
     padding: 5px;
     font-family: Bahnschrift, sans-serif;
     font-weight: 500;
@@ -56,11 +54,22 @@
     border-radius: 1vw;
     background: white;
     transition: all ease 0.25s;
-    &:hover {
+    &:not(&:disabled):hover {
       color: white;
       background: black;
     }
   }
+}
+.correct {
+  border: none;
+  color: black;
+  border-bottom: black solid 0.02vw;
+
+}
+.error {
+  border: none;
+  color: red;
+  border-bottom: red solid 0.02vw;
 }
 
 @media (max-width: 900px) {
@@ -109,3 +118,4 @@
   }
 
 }
+

@@ -1,18 +1,18 @@
 .params {
   display: flex;
-  width: 24vw;
+  width: 100%;
   background: rgba(126, 120, 120, 0.42);
   border-radius: 1vw;
+  margin-top: 1vw;
 
 }
 
 @mixin paramTemplate($color) {
   cursor: pointer;
-  padding: 0.5vw 0;
-  width: 6vw;
+  padding: 5px 10px;
   text-align: center;
   display: inline-block;
-  font-size: 0.9vw;
+  font-size: 15px;
   font-weight: 600;
   border-radius: 1vw;
   transition: all ease 0.25s;
@@ -30,4 +30,10 @@
 
 .chosenParam {
   @include paramTemplate(black)
+}
+
+@media (max-width: 280px) {
+  .param, .chosenParam{
+    font-size: 4vw;
+  }
 }

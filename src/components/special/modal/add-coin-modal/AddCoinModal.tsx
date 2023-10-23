@@ -16,7 +16,7 @@ const AddCoinModal: FunctionComponent = () => {
                             <span>{coin.symbol}</span>
                         </div>
                         <span className={styles.price}>{Intl.NumberFormat("en", { style: 'currency' , currency: "USD"}).format( Number(coin.priceUsd) )}</span>
-                        <BuyCoin/>
+                        <BuyCoin coin={coin}/>
                     </div>
                     :
                     <></>

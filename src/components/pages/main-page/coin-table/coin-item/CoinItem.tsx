@@ -17,7 +17,9 @@ const CoinItem: FunctionComponent<{item: ICoin}> = ({item}) => {
                 </td>
                 <td>{Intl.NumberFormat("en", { style: 'currency' , currency: "USD"}).format( Number(item.priceUsd) )}</td>
                 <td>{Intl.NumberFormat("en", { style: 'currency' , currency: "USD"}).format( Number(item.marketCapUsd) )}</td>
-                <td>{Intl.NumberFormat("en", { maximumFractionDigits: 2}).format( Number(item.changePercent24Hr)) + '%'}</td>
+                <td style={ Number(item.changePercent24Hr) < 0 ? {color: 'red'} :
+                    Number(item.changePercent24Hr) > 0 ? {color: 'green'} : {color: "black"}}>
+                    {Intl.NumberFormat("en", { maximumFractionDigits: 2}).format( Number(item.changePercent24Hr)) + '%'}</td>
                 <td className={styles.btnTd}><AddCoin coin={item}/></td>
             </tr>
             :

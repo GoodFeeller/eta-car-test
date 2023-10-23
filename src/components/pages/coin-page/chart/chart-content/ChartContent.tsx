@@ -1,5 +1,6 @@
 import {FunctionComponent, useEffect, useState} from "react";
 import {IHistory} from "../../../../../service/CoinInfoService";
+import styles from './ChartContent.module.scss'
 import {
     ChartData,
     CategoryScale,
@@ -12,6 +13,7 @@ import {
 import {Line} from "react-chartjs-2";
 import {intervalType} from "../../../../../hooks/useHistory";
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement,Tooltip)
+Chart.defaults.font.size = 12
 
 interface IProps {
     history: IHistory[],
@@ -51,19 +53,17 @@ const ChartContent: FunctionComponent<IProps> = ({ history, interval }) => {
                     label: 'Price',
                     data: info,
                     borderColor: 'black',
-                    pointRadius: 0
+                    pointRadius: 0,
+                    borderWidth: 1
                 }
             ]
         })
     }, [history, interval])
 
-    return <div>
-        <Line data={data} options={{
+    return <div className={styles.chart}>
+        <Line  data={data} options={{
             responsive: true,
-            maintainAspectRatio: true,
-            onResize(chart: Chart, size: { width: number; height: number }) {
-                chart.resize(size.width, size.height)
-            },
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     position: 'right'
