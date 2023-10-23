@@ -7,6 +7,7 @@
 
 .nameBody {
   margin-bottom: 1vw;
+  position: relative;
   font-size: 1.5vw;
   width: 100%;
   border-bottom: 1px rgba(0, 0, 0, 0.55) solid;
@@ -20,6 +21,10 @@
   }
   img {
     width: 2.5vw;
+  }
+  button {
+    position: absolute;
+    right: 5%;
   }
 }
 
@@ -61,6 +66,9 @@
     img {
       width: 30px;
     }
+    button {
+      height: 30px;
+    }
   }
   .priceBody {
     &>span {
@@ -89,6 +97,9 @@
     font-size: 4.46vw;
     img {
       width: 5.3vw;
+    }
+    button {
+      height: 5.3vw;
     }
   }
   .priceBody {

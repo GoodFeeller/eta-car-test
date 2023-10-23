@@ -1,6 +1,7 @@
 import {FunctionComponent} from "react";
 import styles from './CoinTextInfo.module.scss'
 import {ICoinInfo} from "../../../../service/CoinInfoService";
+import AddCoin from "../../main-page/coin-table/coin-item/addCoin/AddCoin";
 
 const CoinTextInfo: FunctionComponent<{coin: ICoinInfo}> = ({ coin }) => {
     return <div className={styles.body}>
@@ -8,6 +9,7 @@ const CoinTextInfo: FunctionComponent<{coin: ICoinInfo}> = ({ coin }) => {
             <span>{coin.name}</span>
             <span>{coin.symbol}</span>
             <img src={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`} alt={'Not found'}/>
+            <AddCoin coin={coin}/>
         </div>
         <div className={styles.priceBody}>
             <span>{Intl.NumberFormat("en", { style: 'currency' , currency: "USD"}).format( Number(coin.priceUsd) )}</span>
@@ -19,7 +21,7 @@ const CoinTextInfo: FunctionComponent<{coin: ICoinInfo}> = ({ coin }) => {
             <span>Rank</span>
             <span>{coin.rank}</span>
             <span>Supply</span>
-            <span>{`${Number(coin.supply)} ${coin.symbol}`}</span>
+            <span>{`${Intl.NumberFormat("en", { maximumFractionDigits: 2}).format( Number(coin.changePercent24Hr))} ${coin.symbol}`}</span>
             <span>Max Supply</span>
             <span>{`${Number(coin.maxSupply)} ${coin.symbol}`}</span>
         </div>

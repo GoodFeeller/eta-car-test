@@ -1,6 +1,6 @@
 import {FunctionComponent, useContext} from "react";
 import styles from './CoinPage.module.scss'
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import CoinTextInfo from "./coin-text-info/CoinTextInfo";
 import Loading from "../../special/loading/Loading";
 import CoinInfoTitle from "./coin-info-title/CoinInfoTitle";
@@ -45,9 +45,16 @@ const CoinPage: FunctionComponent = () => {
                     }
                 </div>
                 :
-                <Loading/>
+                <div>
+                    <Loading/>
+                </div>
                 :
-                <div/>
+                <div className={styles.body}>
+                    <div>
+                        Error coin id! Please go to main page and choose coin! <br/>
+                        <Link to={'/'}>Go back...</Link>
+                    </div>
+                </div>
         }
         </div>
 }
