@@ -44,7 +44,7 @@ function useChartInfo(history: IHistory[], interval: intervalType, setLoading: D
             ]
         })
         setLoading(true)
-    }, [history, interval])
+    }, [history, interval, setLoading])
     return data
 }
 export default useChartInfo
