@@ -27,9 +27,10 @@ const ChartContent: FunctionComponent<IProps> = ({ history, interval , loading, 
                 setMousePos({left: event.clientX - c.x , top: event.clientY - c.y})
             }
         }
-        if (chartRef.current)
-            chartRef.current.addEventListener('mousemove', hoverLines)
-        return () => { if (chartRef.current) chartRef.current.removeEventListener('mousemove', hoverLines) }
+        const current = chartRef.current
+        if (current)
+            current.addEventListener('mousemove', hoverLines)
+        return () => { if (current) current.removeEventListener('mousemove', hoverLines) }
     })
     return <div className={loading ? styles.body + ' ' + styles.noVisiableBody : styles.body}>
         <Loading/>
