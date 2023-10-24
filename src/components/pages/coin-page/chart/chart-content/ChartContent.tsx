@@ -1,93 +1,44 @@
-import {FunctionComponent, useEffect, useState} from "react";
+import {Dispatch, FunctionComponent, SetStateAction, useEffect, useRef, useState} from "react";
 import {IHistory} from "../../../../../service/CoinInfoService";
 import styles from './ChartContent.module.scss'
-import {
-    ChartData,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Tooltip,
-    Chart,
-} from "chart.js";
-import {Line} from "react-chartjs-2";
 import {intervalType} from "../../../../../hooks/useHistory";
-Chart.register(CategoryScale, LinearScale, PointElement, LineElement,Tooltip)
-Chart.defaults.font.size = 12
+import useChartInfo from "../../../../../hooks/useChartInfo";
+import Loading from "../../../../special/loading/Loading";
+import LineChart from "./line/LineChart";
+
 
 interface IProps {
     history: IHistory[],
     interval: intervalType
+    loading: boolean,
+    setLoading: Dispatch<SetStateAction<boolean>>
 }
-function customizeDate(interval: intervalType, e: IHistory): string {
-    switch(interval) {
-        case "h1":
-            return `${new Date(e.date).getDate()}`
-        case "d1":
-            return `${new Date(e.date).getMonth() + 1}.${new Date(e.date).getDate()}`
-        case "m1":
-            return `${new Date(e.date).getHours()}:${new Date(e.date).getMinutes()}`
-        case "m15":
-            return `${new Date(e.date).getDate()}.${new Date(e.date).getHours()}:00`
-    }
-}
-const ChartContent: FunctionComponent<IProps> = ({ history, interval }) => {
-    const [data, setData] = useState<ChartData<'line', number[]>>({
-        labels: [],
-        datasets: [
-            {
-                label: 'Price',
-                data: [],
-                borderColor: 'black',
-                pointRadius: 0
-            }
-        ]
-    })
-    useEffect( () => {
-        const info = history.filter( (e, i) => i % 3 === 0).map(e => Number(e.priceUsd))
-        const dates = history.filter( (e, i) => i % 3 === 0).map(e => customizeDate(interval, e))
-        setData({
-            labels: dates,
-            datasets: [
-                {
-                    label: 'Price',
-                    data: info,
-                    borderColor: 'black',
-                    pointRadius: 0,
-                    borderWidth: 1
-                }
-            ]
-        })
-    }, [history, interval])
 
-    return <div className={styles.chart}>
-        <Line  data={data} options={{
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    position: 'right'
-                },
-                x: {
-                    stack: '100',
-                    stacked: true,
-                    stackWeight: 10
-                }
-            },
-            plugins: {
-                tooltip: {
-                    enabled: true,
-                    backgroundColor: 'rgb(238,238,238)',
-                    titleColor: 'black',
-                    bodyColor: 'black',
-                    mode: 'nearest',
-                    intersect: false,
-                    axis: 'x',
-                    padding: 20,
-                    displayColors: false,
-                }
+
+const ChartContent: FunctionComponent<IProps> = ({ history, interval , loading, setLoading}) => {
+    const chartRef = useRef<HTMLDivElement>(null)
+    const data = useChartInfo(history, interval, setLoading)
+    const [mousePos, setMousePos] = useState<{left: number, top: number}>({left: 0, top: 0})
+
+    useEffect( () => {
+        const hoverLines = (event: MouseEvent) => {
+            if (chartRef.current) {
+                const c = chartRef.current.getBoundingClientRect()
+                setMousePos({left: event.clientX - c.x , top: event.clientY - c.y})
             }
-        }}/>
+        }
+        if (chartRef.current)
+            chartRef.current.addEventListener('mousemove', hoverLines)
+        return () => chartRef.current?.removeEventListener('mousemove', hoverLines)
+    })
+    return <div className={loading ? styles.body + ' ' + styles.noVisiableBody : styles.body}>
+        <Loading/>
+        <div ref={chartRef} className={!loading ? styles.chart + ' ' + styles.noVisiable : styles.chart}>
+            <div style={{left: `${mousePos.left}px`}} className={styles.vertLine}/>
+            <div style={{top: `${mousePos.top}px`}} className={styles.horizLine}/>
+            <LineChart data={data}/>
+        </div>
     </div>
+
 }
 export default ChartContent

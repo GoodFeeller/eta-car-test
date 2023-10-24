@@ -4,11 +4,11 @@ import useHistory from "../../../../hooks/useHistory";
 import ChartContent from "./chart-content/ChartContent";
 
 const Chart: FunctionComponent<{id: string}> = ({id}) => {
-    const { history, setNewInterval, interval} = useHistory(id)
+    const { history, setNewInterval, interval, loading, setLoading} = useHistory(id)
 
     return <div>
         <ChartParams setNewInterval={setNewInterval} interval={interval}/>
-        <ChartContent interval={interval} history={history}/>
+        <ChartContent setLoading={setLoading} loading={loading} interval={interval} history={history}/>
     </div>
 }
 export default Chart

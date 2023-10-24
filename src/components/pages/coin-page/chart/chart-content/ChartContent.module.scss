@@ -1,5 +1,41 @@
 .chart {
   height: 30vw;
+  position: relative;
+}
+.horizLine {
+  height: 1.5px;
+  width: 100%;
+  position: absolute;
+  background: black;
+  z-index: -1;
+}
+.vertLine {
+  width: 1.5px;
+  height: 100%;
+  position: absolute;
+  background: black;
+  z-index: -1;
+}
+.noVisiable {
+  opacity: 0;
+  transition: all ease 0.25s;
+}
+.body {
+  position: relative;
+  &>div:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    transition: all ease 0.25s;
+  }
+}
+.noVisiableBody {
+  &>div:first-child {
+    opacity: 0;
+  }
 }
 @media (max-width: 560px) {
 .chart {
