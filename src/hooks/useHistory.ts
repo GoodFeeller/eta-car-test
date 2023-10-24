@@ -6,8 +6,6 @@ function useHistory(id: string) {
     const [interval, setNewInterval] = useState<intervalType>('m1')
     const [history, setHistory] = useState<IHistory[]>([])
     const [loading, setLoading] = useState<boolean>(false)
-
-
     useEffect( () => {
         const getHistory = async () => {
             if (id != null) {
