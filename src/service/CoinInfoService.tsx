@@ -1,49 +1,53 @@
-import axios, {AxiosResponse} from "axios";
-import {intervalType} from "../hooks/useHistory";
+import axios, { AxiosResponse } from 'axios'
+import { intervalType } from '../hooks/useHistory'
 
-const baseUrl: string = 'https://api.coincap.io/v2/assets/'
+const baseUrl = 'https://api.coincap.io/v2/assets/'
 
 export interface ICoinInfo {
-    id: string,
-    name: string
-    rank: string,
-    symbol: string,
-    supply: string,
-    maxSupply: string,
-    marketCapUsd: string,
-    priceUsd: string,
-    changePercent24Hr: string,
+  id: string
+  name: string
+  rank: string
+  symbol: string
+  supply: string
+  maxSupply: string
+  marketCapUsd: string
+  priceUsd: string
+  changePercent24Hr: string
 }
 export interface IHistory {
-    date: string
-    priceUsd: string
+  date: string
+  priceUsd: string
 }
 interface IAssetsResponse {
-    data: ICoinInfo
+  data: ICoinInfo
 }
 interface IHistoryResponse {
-    data: IHistory[]
+  data: IHistory[]
 }
 
 const CoinInfoService = {
-    getCoin: async function (id: string): Promise<ICoinInfo> {
-        try {
-            const response: AxiosResponse<IAssetsResponse> = await axios.get(`${baseUrl}${id}`)
-            return response.data.data
-        } catch (err) {
-            throw new Error('Not found')
-        }
-    },
-    getHistory: async function (id: string, interval: intervalType): Promise<IHistory[]> {
-        try {
-            const response: AxiosResponse<IHistoryResponse> = await axios.get(`${baseUrl}${id}/history?interval=${interval}`)
-            return response.data.data
-        }
-        catch (err) {
-            throw new Error('Not found')
-        }
+  getCoin: async function (id: string): Promise<ICoinInfo> {
+    try {
+      const response: AxiosResponse<IAssetsResponse> = await axios.get(
+        `${baseUrl}${id}`,
+      )
+      return response.data.data
+    } catch (err) {
+      throw new Error('Not found')
     }
-
+  },
+  getHistory: async function (
+    id: string,
+    interval: intervalType,
+  ): Promise<IHistory[]> {
+    try {
+      const response: AxiosResponse<IHistoryResponse> = await axios.get(
+        `${baseUrl}${id}/history?interval=${interval}`,
+      )
+      return response.data.data
+    } catch (err) {
+      throw new Error('Not found')
+    }
+  },
 }
 export default CoinInfoService
-/* m1 - 1day  m15 - 7 days  h1 - m1 month d1 - 1 year*/
