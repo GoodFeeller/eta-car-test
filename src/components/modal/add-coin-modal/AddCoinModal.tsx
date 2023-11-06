@@ -26,7 +26,7 @@ const AddCoinModal: FunctionComponent = () => {
           <BuyCoin coin={coin} />
         </div>
       ) : (
-        <></>
+        <div>Coin Not Found!</div>
       )}
     </>
   )

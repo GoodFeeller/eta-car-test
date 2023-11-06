@@ -1,10 +1,9 @@
 import { FunctionComponent, useEffect, useState } from 'react'
 import styles from '../AddCoinModal.module.scss'
-import { ICoin } from '../../../../service/CoinTableService'
-import { ICoinInfo } from '../../../../service/CoinInfoService'
 import useBuyCoin from '../../../../hooks/useBuyCoin'
+import { ICoin } from '../../../../types/ICoin'
 
-const BuyCoin: FunctionComponent<{ coin: ICoin | ICoinInfo }> = ({ coin }) => {
+const BuyCoin: FunctionComponent<{ coin: ICoin }> = ({ coin }) => {
   const [error, setError] = useState<boolean>(false)
   const { count, setCount, buy } = useBuyCoin(coin)
 

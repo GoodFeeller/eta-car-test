@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'react'
 import styles from './CoinTextInfo.module.scss'
-import { ICoinInfo } from '../../service/CoinInfoService'
 import AddCoin from '../coin-table/coin-item/addCoin/AddCoin'
+import { ICoin } from '../../types/ICoin'
 
-const CoinTextInfo: FunctionComponent<{ coin: ICoinInfo }> = ({ coin }) => {
+const CoinTextInfo: FunctionComponent<{ coin: ICoin }> = ({ coin }) => {
   return (
     <div className={styles.body}>
       <div className={styles.nameBody}>

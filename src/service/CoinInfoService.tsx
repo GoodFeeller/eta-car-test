@@ -1,37 +1,13 @@
-import axios, { AxiosResponse } from 'axios'
 import { intervalType } from '../hooks/useHistory'
-
-const baseUrl = 'https://api.coincap.io/v2/assets/'
-
-export interface ICoinInfo {
-  id: string
-  name: string
-  rank: string
-  symbol: string
-  supply: string
-  maxSupply: string
-  marketCapUsd: string
-  priceUsd: string
-  changePercent24Hr: string
-}
-export interface IHistory {
-  date: string
-  priceUsd: string
-}
-interface IAssetsResponse {
-  data: ICoinInfo
-}
-interface IHistoryResponse {
-  data: IHistory[]
-}
+import { ICoin } from '../types/ICoin'
+import { IHistory } from '../types/IHistory'
+import trpc from './appRouter'
 
 const CoinInfoService = {
-  getCoin: async function (id: string): Promise<ICoinInfo> {
+  getCoin: async function (id: string): Promise<ICoin> {
     try {
-      const response: AxiosResponse<IAssetsResponse> = await axios.get(
-        `${baseUrl}${id}`,
-      )
-      return response.data.data
+      const response: ICoin = await trpc.coin.getCoin.query(id)
+      return response
     } catch (err) {
       throw new Error('Not found')
     }
@@ -41,10 +17,11 @@ const CoinInfoService = {
     interval: intervalType,
   ): Promise<IHistory[]> {
     try {
-      const response: AxiosResponse<IHistoryResponse> = await axios.get(
-        `${baseUrl}${id}/history?interval=${interval}`,
-      )
-      return response.data.data
+      const response: IHistory[] = await trpc.history.getHistory.query({
+        id: id,
+        interval: interval,
+      })
+      return response
     } catch (err) {
       throw new Error('Not found')
     }

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import CoinInfoService, { ICoinInfo } from '../service/CoinInfoService'
+import CoinInfoService from '../service/CoinInfoService'
+import { ICoin } from '../types/ICoin'
 
 function useCoinInfo(id: string | undefined) {
-  const [coinInfo, setCoinInfo] = useState<ICoinInfo>()
+  const [coinInfo, setCoinInfo] = useState<ICoin>()
   const [notFound, setNotFound] = useState<boolean>(false)
   useEffect(() => {
     const getCoin = async () => {
@@ -16,7 +17,7 @@ function useCoinInfo(id: string | undefined) {
       }
     }
     getCoin()
-  }, [id])
+  }, [])
   return { coinInfo, notFound }
 }
 export default useCoinInfo

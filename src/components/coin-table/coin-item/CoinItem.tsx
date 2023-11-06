@@ -1,8 +1,8 @@
 import { FunctionComponent, memo } from 'react'
-import { ICoin } from '../../../service/CoinTableService'
 import AddCoin from './addCoin/AddCoin'
 import { useNavigate } from 'react-router-dom'
 import styles from '../CoinTable.module.scss'
+import { ICoin } from '../../../types/ICoin'
 
 const CoinItem: FunctionComponent<{ item: ICoin }> = ({ item }) => {
   const navigate = useNavigate()

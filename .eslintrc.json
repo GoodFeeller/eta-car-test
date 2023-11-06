@@ -9,7 +9,8 @@
         "plugin:import/warnings",
         "plugin:import/typescript",
         "plugin:prettier/recommended",
-        "prettier"
+        "prettier",
+        "plugin:storybook/recommended"
     ],
     "plugins": [
         "react",

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { ChartData } from 'chart.js/auto'
-import { IHistory } from '../service/CoinInfoService'
 import { intervalType } from './useHistory'
+import { IHistory } from '../types/IHistory'
 
 function customizeDate(interval: intervalType, e: IHistory): string {
   switch (interval) {
@@ -28,6 +28,8 @@ function useChartInfo(
         data: [],
         borderColor: 'black',
         pointRadius: 0,
+        fill: true,
+        backgroundColor: 'red',
       },
     ],
   })
@@ -47,6 +49,8 @@ function useChartInfo(
           borderColor: 'black',
           pointRadius: 0,
           borderWidth: 1,
+          fill: 100,
+          backgroundColor: 'red',
         },
       ],
     })

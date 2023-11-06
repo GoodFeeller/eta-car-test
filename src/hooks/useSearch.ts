@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import CoinTableService, { ICoin } from '../service/CoinTableService'
+import CoinTableService from '../service/CoinTableService'
+import { ICoin } from '../types/ICoin'
 
 function useSearch() {
   const [search, setSearch] = useState<string>('')

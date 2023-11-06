@@ -1,11 +1,9 @@
 import { FunctionComponent } from 'react'
-import { IPopularCoin } from '../../../../service/PopularCoinService'
 import styles from '../PopularCoins.module.scss'
 import { useNavigate } from 'react-router-dom'
+import { ICoin } from '../../../../types/ICoin'
 
-const PopularCoinItem: FunctionComponent<{ coin: IPopularCoin }> = ({
-  coin,
-}) => {
+const PopularCoinItem: FunctionComponent<{ coin: ICoin }> = ({ coin }) => {
   const navigate = useNavigate()
   return (
     <div

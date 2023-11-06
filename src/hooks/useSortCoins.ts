@@ -1,4 +1,3 @@
-import { ICoin } from '../service/CoinTableService'
 import {
   Dispatch,
   SetStateAction,
@@ -6,6 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react'
+import { ICoin } from '../types/ICoin'
 
 export type sortType = {
   property: 'priceUsd' | 'marketCapUsd' | 'changePercent24Hr' | 'rank'

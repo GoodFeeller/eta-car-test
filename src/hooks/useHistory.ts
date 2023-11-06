@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import CoinInfoService, { IHistory } from '../service/CoinInfoService'
+import CoinInfoService from '../service/CoinInfoService'
+import { IHistory } from '../types/IHistory'
 export type intervalType = 'm1' | 'm15' | 'h1' | 'd1'
 
 function useHistory(id: string) {

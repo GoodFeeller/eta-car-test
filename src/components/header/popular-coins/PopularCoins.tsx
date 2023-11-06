@@ -1,12 +1,11 @@
 import { FunctionComponent, useEffect, useState } from 'react'
-import PopularCoinService, {
-  IPopularCoin,
-} from '../../../service/PopularCoinService'
 import PopularCoinItem from './populat-coin-item/PopularCoinItem'
 import styles from './PopularCoins.module.scss'
+import { ICoin } from '../../../types/ICoin'
+import PopularCoinService from '../../../service/PopularCoinService'
 
 const PopularCoins: FunctionComponent = () => {
-  const [coins, setCoins] = useState<IPopularCoin[]>([])
+  const [coins, setCoins] = useState<ICoin[]>([])
   useEffect(() => {
     const getCoins = async () => {
       const response = await PopularCoinService.getCoins()

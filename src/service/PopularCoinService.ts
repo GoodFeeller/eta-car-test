@@ -1,23 +1,11 @@
-import axios, { AxiosResponse } from 'axios'
-
-const baseUrl = 'https://api.coincap.io/v2/assets'
-
-export interface IPopularCoin {
-  id: string
-  priceUsd: string
-  symbol: string
-}
-export interface IPopularResponse {
-  data: IPopularCoin[]
-}
+import { ICoin } from '../types/ICoin'
+import trpc from './appRouter'
 
 const PopularCoinService = {
-  async getCoins(): Promise<IPopularCoin[]> {
+  async getCoins(): Promise<ICoin[]> {
     try {
-      const response: AxiosResponse<IPopularResponse> = await axios.get(
-        `${baseUrl}?limit=3`,
-      )
-      return response.data.data
+      const response: ICoin[] = await trpc.coin.getPopularCoins.query()
+      return response
     } catch (err) {
       console.log(err)
       return []

@@ -1,10 +1,9 @@
 import { IProfileCoin, IProfileTotal } from '../service/ProfileTypes'
 import { useContext, useState } from 'react'
-import { ICoin } from '../service/CoinTableService'
-import { ICoinInfo } from '../service/CoinInfoService'
 import { AddContext } from '../providers/AddContext'
+import { ICoin } from '../types/ICoin'
 
-function useBuyCoin(coin: ICoin | ICoinInfo) {
+function useBuyCoin(coin: ICoin) {
   const [count, setCount] = useState<string>('0')
   const { setCoin } = useContext(AddContext)
   const buy = () => {

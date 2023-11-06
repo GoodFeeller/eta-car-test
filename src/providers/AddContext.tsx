@@ -6,12 +6,11 @@ import {
   SetStateAction,
   useState,
 } from 'react'
-import { ICoin } from '../service/CoinTableService'
-import { ICoinInfo } from '../service/CoinInfoService'
+import { ICoin } from '../types/ICoin'
 
 interface IAddContext {
-  coin: ICoin | ICoinInfo | null
-  setCoin: Dispatch<SetStateAction<ICoin | ICoinInfo | null>>
+  coin: ICoin | null
+  setCoin: Dispatch<SetStateAction<ICoin | null>>
 }
 export const AddContext = createContext<IAddContext>({
   coin: null,
@@ -21,7 +20,7 @@ export const AddContext = createContext<IAddContext>({
 const AddProvider: FunctionComponent<PropsWithChildren<unknown>> = ({
   children,
 }) => {
-  const [coin, setCoin] = useState<ICoin | ICoinInfo | null>(null)
+  const [coin, setCoin] = useState<ICoin | null>(null)
   return (
     <AddContext.Provider value={{ coin, setCoin }}>
       {children}

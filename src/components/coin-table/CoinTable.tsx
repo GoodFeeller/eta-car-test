@@ -10,7 +10,6 @@ import SearchCoin from './search-coin/SearchCoin'
 const CoinTable: FunctionComponent = () => {
   const { coins, setCoins, loading, setSearch, search } = useSearch()
   const { sort, setSort } = useSortCoins(coins, setCoins, loading)
-
   return (
     <div className={styles.tableBody}>
       <SearchCoin search={search} setSearch={setSearch} />

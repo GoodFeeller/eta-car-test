@@ -21,24 +21,30 @@ const ProfileCoin: FunctionComponent<{ coin: IProfileCoin }> = ({ coin }) => {
   }
   return (
     <div className={styles.coinItem}>
-      <div>
-        <div>
-          <img
-            src={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
-            alt={'Not found'}
-          />
-          <span>{coin.symbol}</span>
-        </div>
-        <span>
-          Price:{' '}
-          {Intl.NumberFormat('en', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(coin.totalPrice)}
-        </span>
-        <span>Count: {coin.count}</span>
-      </div>
-      <button onClick={() => remove()}>remove</button>
+      {coin ? (
+        <>
+          <div>
+            <div>
+              <img
+                src={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
+                alt={'Not found'}
+              />
+              <span>{coin.symbol}</span>
+            </div>
+            <span>
+              Price:{' '}
+              {Intl.NumberFormat('en', {
+                style: 'currency',
+                currency: 'USD',
+              }).format(coin.totalPrice)}
+            </span>
+            <span>Count: {coin.count}</span>
+          </div>
+          <button onClick={() => remove()}>remove</button>
+        </>
+      ) : (
+        <div>Coin Not Found!</div>
+      )}
     </div>
   )
 }

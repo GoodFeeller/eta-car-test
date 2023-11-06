@@ -6,12 +6,12 @@ import {
   useRef,
   useState,
 } from 'react'
-import { IHistory } from '../../../service/CoinInfoService'
 import styles from './ChartContent.module.scss'
 import { intervalType } from '../../../hooks/useHistory'
 import useChartInfo from '../../../hooks/useChartInfo'
 import Loading from '../../loading/Loading'
 import LineChart from './line/LineChart'
+import { IHistory } from '../../../types/IHistory'
 
 interface IProps {
   history: IHistory[]

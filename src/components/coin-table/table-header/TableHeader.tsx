@@ -1,4 +1,4 @@
-import { Dispatch, FunctionComponent, SetStateAction } from 'react'
+import { Dispatch, FunctionComponent, SetStateAction, memo } from 'react'
 import { sortType } from '../../../hooks/useSortCoins'
 import styles from '../CoinTable.module.scss'
 
@@ -54,4 +54,4 @@ const TableHeader: FunctionComponent<IProps> = ({ sort, setSort }) => {
     </thead>
   )
 }
-export default TableHeader
+export default memo(TableHeader)
