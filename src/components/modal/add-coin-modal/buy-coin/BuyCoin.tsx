@@ -14,6 +14,7 @@ const BuyCoin: FunctionComponent<{ coin: ICoin }> = ({ coin }) => {
   return (
     <div className={styles.buyBlock}>
       <input
+        name="Count"
         className={error ? styles.error : styles.correct}
         type={'text'}
         maxLength={4}

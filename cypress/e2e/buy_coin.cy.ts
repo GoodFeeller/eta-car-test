@@ -1,0 +1,28 @@
+describe('Buy coin test', () => {
+  let price: string
+  beforeEach(() => {
+    cy.visit('/')
+    cy.get('button').contains('ADD').as('btn')
+    cy.get('@btn')
+      .parents()
+      .children()
+      .eq(3)
+      .then((e) => (price = e.text()))
+  })
+  it('Successful buy', () => {
+    cy.get('@btn').click()
+    cy.get('input[name=Count]').type('1')
+    cy.get('button').contains('Buy').click()
+    cy.get('span')
+      .contains('TotalPrice')
+      .should('contain.text', `TotalPrice: ${price}`)
+    cy.clearAllLocalStorage()
+    cy.get('@btn').parent().click()
+    cy.get('button').contains('ADD').click()
+    cy.get('input[name=Count]').type('1')
+    cy.get('button').contains('Buy').click()
+    cy.get('span')
+      .contains('TotalPrice')
+      .should('contain.text', `TotalPrice: ${price}`)
+  })
+})
